@@ -2,12 +2,15 @@
 const btn = document.querySelector('.toggle-img__btn');
 
 function toggleImg() {
-    const [img1, img2] = document.querySelectorAll('.toggle-img__img');
-    const src1 = img1.getAttribute('src');
-    const src2 = img2.getAttribute('src');
+    const [...srcs] = document.querySelectorAll('.toggle-img__img');
 
-    img1.setAttribute('src', src2);
-    img2.setAttribute('src', src1);
+    const links = srcs.map((el) => el.getAttribute('src'));
+
+    for (let i = 0; i < srcs.length; i++) {
+        const item = links[i-1] ? links[i-1] : links[links.length-1];
+
+        srcs[i].setAttribute('src', item);
+    }
 }
 
 btn.addEventListener('click', toggleImg);
