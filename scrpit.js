@@ -15,7 +15,12 @@ function toggleImg() {
 
 btn.addEventListener('click', toggleImg);
 
+
 // 2
-document.querySelector('.disposable-btn').addEventListener('click', function(e) {
+function disposable(e) {
     e.currentTarget.setAttribute('disabled', 'disabled');
-});
+
+    e.currentTarget.removeEventListener('click', disposable)
+}
+
+document.querySelector('.disposable-btn').addEventListener('click', disposable);
